@@ -4,17 +4,18 @@
         - code postal
         - ville
         - nom
-        - nbPersonnes dépisté
-        - nbPersonnes positives
         - type d'établissement (hospital, tente, pharmacie, laboratoire)
         - numéro de tel
         - horraires
-        - avis
-
     - visite
         - hArr
         - hSortie
+        - établissement d'acceuil (clé étrangere)
         - age
+        - positif (oui ou non)
+        - vaccin (oui non)
+        - avis    
+
 
 - Page web
     - Carte geo
