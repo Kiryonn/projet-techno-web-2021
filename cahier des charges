@@ -1,8 +1,14 @@
 - Base de donnée
     - centre de dépistage
         - addresse
+        - code postal
         - nom
         - nbPersonnes dépisté
         - nbPersonnes positives
+        - type d'établissement (hospital, tente, pharmacie, laboratoire)
+        - numéro de tel
+        - horraires
 
 - Page web
+    - Carte geo
+    - Stats
