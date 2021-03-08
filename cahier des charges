@@ -1,1 +1,8 @@
-oki
+- Base de donnée
+    - centre de dépistage
+        - addresse
+        - nom
+        - nbPersonnes dépisté
+        - nbPersonnes positives
+
+- Page web
