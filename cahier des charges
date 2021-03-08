@@ -2,12 +2,19 @@
     - centre de dépistage
         - addresse
         - code postal
+        - ville
         - nom
         - nbPersonnes dépisté
         - nbPersonnes positives
         - type d'établissement (hospital, tente, pharmacie, laboratoire)
         - numéro de tel
         - horraires
+        - avis
+
+    - visite
+        - hArr
+        - hSortie
+        - age
 
 - Page web
     - Carte geo
