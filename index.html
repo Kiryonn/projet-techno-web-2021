@@ -5,14 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+    <!-- cluster -->
+    <link rel="stylesheet" href="cluster/dist/MarkerCluster.css"/>
+    <link rel="stylesheet" href="cluster/dist/MarkerCluster.Default.css"/>
+    <script src="cluster/dist/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="style/carte.css">
+
+    <!-- données -->
+    <script src="airbnb_albi.js"></script>
+    
 </head>
 <body>
     <header>
         <!--Logo, noms ...-->
     </header>
     <div id="carte">
-        <!-- carte & recherche a-->
+        <!-- carte -->
     </div>
+    <script src="script/carte.js"></script>
+
     <div id="stats">
         <!-- stats -->
     </div>
