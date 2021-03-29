@@ -1,4 +1,6 @@
-var mymap = L.map('carte').setView([43.9277552, 2.147899], 13)
+document.getElementById("carte").style.height = screen.height/2 + "px"
+
+let mymap = L.map('carte').setView([43.9277552, 2.147899], 13)
 
 L.tileLayer(
     'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
