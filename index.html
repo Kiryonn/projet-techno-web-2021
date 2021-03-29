@@ -6,15 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
     <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 
     <!-- cluster -->
     <link rel="stylesheet" href="cluster/dist/MarkerCluster.css"/>
     <link rel="stylesheet" href="cluster/dist/MarkerCluster.Default.css"/>
     <script src="cluster/dist/leaflet.markercluster.js"></script>
+
+    <!-- css -->
+    <link rel="stylesheet" href="style/basics.css">
     <link rel="stylesheet" href="style/carte.css">
 
     <!-- données -->
@@ -26,13 +31,16 @@
         <!--Logo, noms ...-->
         <img src="res/img/logo.png" alt="logo">
     </header>
-    <div id="carte">
-        <!-- carte -->
-    </div>
-    <script src="script/carte.js"></script>
+    <div class="container">
+        <div class=row>
+            <div class="col" id="searchBar">Recherche</div>
+            <div class="col" id="carte"></div>
+            <script src="script/carte.js"></script>
+        </div>
 
-    <div id="stats">
-        <!-- stats -->
+        <div class="row" id="stats">
+            <!-- stats -->
+        </div>
     </div>
     <footer>
         <!-- about us github ... -->
