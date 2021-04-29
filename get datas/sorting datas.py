@@ -1,4 +1,4 @@
-def decoupeAddresse(string):
+"""def decoupeAddresse(string):
     counter = 0
     string = string.split("CEDEX")[0]
     for i in range(len(string)):
@@ -8,17 +8,7 @@ def decoupeAddresse(string):
             counter = 0
         if counter == 5:
             return string[:i - 5], string[i - 4:i + 1], string[i + 2:]
-
-
-def printDatas(datas):
-    print("{")
-    for data in datas:
-        print("\t{")
-        for thing in datas[data]:
-            print(f"\t\t{thing}: {datas[data][thing]}")
-        print("\t}")
-    print("}")
-
+"""
 
 if __name__ == '__main__':
     datas = open("datas.json", "w", encoding="utf-8")
