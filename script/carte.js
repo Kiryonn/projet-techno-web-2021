@@ -13,6 +13,11 @@ L.tileLayer(
     }
 ).addTo(mymap)
 
+
+L.control.search({
+    data: items
+  }).addTo(map);
+
 let maison = L.icon({iconUrl: "res/img/home.png", popupAnchor:  [16, -10]})
 
 let group = L.markerClusterGroup()
