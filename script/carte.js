@@ -14,9 +14,7 @@ L.tileLayer(
 ).addTo(mymap)
 
 
-L.control.search({
-    data: items
-  }).addTo(map);
+
 
 let maison = L.icon({iconUrl: "res/img/home.png", popupAnchor:  [16, -10]})
 
@@ -24,18 +22,7 @@ let group = L.markerClusterGroup()
 
 marqueurs.forEach(element => {
     // let point = L.marker([element.lat, element.lng], {icon: maison}).addTo(mymap); // sans cluster
-    let point = L.marker([element.lat, element.lng], {icon: maison})  // cluster
-
-    let host = "Hébergement proposé par " + element.hôte
-    let libelle = element.libellé
-    let local = element.localisation
-    let capPrix = "Pour " + element.capacité + " personnes -- " + element.prix + "€/nuit"
-    let note = "Evaluation des clients: " + nbEtoiles(element.évaluation)
-
-    let description = host + "<br>" + "<b>" +libelle + "</b><br>" + local + "<br>" + capPrix + "<br>" + note
-
-    point.bindPopup(description)
-
+    let point = L.marker([element.latitude, element.longitude], {icon: maison})  // cluster
     group.addLayer(point)  // cluster
 })
 mymap.addLayer(group)  // cluster
