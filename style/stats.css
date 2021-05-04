@@ -1,0 +1,28 @@
+#stats{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#stats h1{
+    font-size: 1.3em;
+    text-decoration: underline black;
+}
+
+#centre{
+    width: auto;
+    /*background-color: rgb(110, 159, 231);*/
+}
+
+#gauche{
+    width: 50%;
+    background-color: rgb(110, 159, 231);
+    float: left;
+}
+
+#droite{
+    width: 50%;
+    background-color: rgb(236, 89, 114);
+    float: right;
+}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,27 +9,37 @@
 
     <!-- Bootstrap -->
     <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
     <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
 
     <!-- cluster -->
-    <link rel="stylesheet" href="cluster/dist/MarkerCluster.css"/>
-    <link rel="stylesheet" href="cluster/dist/MarkerCluster.Default.css"/>
+    <link rel="stylesheet" href="cluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="cluster/dist/MarkerCluster.Default.css" />
     <script src="cluster/dist/leaflet.markercluster.js"></script>
 
     <!-- css -->
     <link rel="stylesheet" href="style/basics.css">
     <link rel="stylesheet" href="style/carte.css">
+    <link rel="stylesheet" href="style/stats.css" type="text/css">
 
     <!-- données -->
     <script src="res/data.js"></script>
+    <script src="res/sites.js"></script>
 
 </head>
-<body>
+
+<body onresize="majAff()">
     <div class="container">
+
+
         <div class="row justify-content-start" id="header">
             <!--Logo, noms ...-->
             <div class="col-1 justify-content-start"><img src="res/img/logo.png" alt="logo"></div>
@@ -40,12 +51,46 @@
             <script src="script/searchbar.js"></script>
         </div>
 
-        <div class="row justify-content-start" id="stats">
-            <!-- stats -->
+
+        <div id="comparaisons">
+
+            <form id="menu1">
+                <select id="site1" onclick="menuClick(this, 0);">
+                    <option>-- choisissez un site --</option>
+                </select>
+            </form>
+
+            <form id="menu2">
+                <select id="site2" onclick="menuClick(this, 1);">
+                    <option>-- choisissez un site --</option>
+                </select>
+            </form>
         </div>
+
+        <div class="row justify-content-start" id="stats">
+            <div id="centre">
+                <!-- Stats d'un site en plein écran (taille 100%) -->
+                <!-- <p>test1</p> -->
+            </div>
+
+            <div id="gauche">
+                <!-- Stats d'un site à gauche (taille 50%) -->
+                <!-- <p>test2</p> -->
+            </div>
+
+            <div id="droite">
+                <!-- Stats d'un site à droite (taille 50%) -->
+                <!-- <p>test3</p> -->
+            </div>
+            <script src="script/stats.js"></script>
+            <script src="script/menuD.js"></script>
+        </div>
+
+
         <div class="row justify-content-start" id="footer">
             <!-- about us github ... -->
         </div>
     </div>
 </body>
+
 </html>
