@@ -16,13 +16,13 @@
 }
 
 #gauche{
-    width: 50%;
+    width: 48%;
     background-color: rgb(110, 159, 231);
     float: left;
 }
 
 #droite{
-    width: 50%;
+    width: 48%;
     background-color: rgb(236, 89, 114);
     float: right;
 }

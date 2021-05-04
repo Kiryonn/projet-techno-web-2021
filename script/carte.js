@@ -1,4 +1,5 @@
-document.getElementById("carte").style.height = screen.height/2 + "px"
+document.getElementById("carte").style.height = screen.height/2 + 50 + "px"
+document.getElementById("carte").style.width = screen.width + "px"
 
 let mymap = L.map('carte').setView([43.9277552, 2.147899], 13)
 
