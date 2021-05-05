@@ -1,3 +1,5 @@
+var nomG;
+
 function createCanvas(nom, longueur, hauteur){
   let canvas = document.createElement('canvas');
   canvas.id = nom;
@@ -35,6 +37,7 @@ function createHoraires(nom, largueur, hauteur, tabHoraires){
   let h = ["7h", "8h", "9h", "10h", "11h", "12h", "13h", "14h", "15h", "16h", "17h", "18h"]; // préférable d'utiliser cet affichage pour l'heure, plus lisible sur petit schéma.
   let canvas = document.getElementById(nom);
   let hor = tabHoraires;
+  console.log("horaires: " + hor);
   dessinRectangle(nom, 0, 0, canvas.width, canvas.height, 'rgba(50, 50, 50, 0.3)');
 
   for (let i=1; i<8; i++){
@@ -136,10 +139,10 @@ function avisSite(note, total){
 
 function afficherInfo(site){ //passer le site entier en paramètre
   let div = document.createElement('div');
-  div.id = site.nom + " info div";
+  div.id = nomG + " info div";
 
   let texte = document.createElement('p');
-  texte.id = site.nom + " info";
+  texte.id = nomG + " info";
 
   texte.innerHTML += "<strong>Type de site:</strong> "          + typeSite(site.type)              + "<br>";
   texte.innerHTML += "<strong>Test effectué:</strong> "         + typeTest(site.typeTest)          + "<br>";
@@ -154,10 +157,13 @@ function afficherInfo(site){ //passer le site entier en paramètre
 
 
 
-function stats(site, pere){
+function stats(numSite, pere){
+  let site = sites[numSite];
   let largueur = document.getElementById(pere).offsetWidth;
   let hauteur = largueur*0.75;
-  createHoraires(site.nom + " horaires canvas", largueur, hauteur, site.horairesOuverture);
+  console.log("appel stats()")
+  nomG = numSite + " " + site.nom;
+  createHoraires(nomG + " horaires canvas", largueur, hauteur, site.horairesOuverture);
   afficherInfo(site);
 }
 /*
