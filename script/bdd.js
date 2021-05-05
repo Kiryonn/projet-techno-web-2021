@@ -149,7 +149,6 @@ dbconnection.onsuccess = ev => {
           cursor.value.avis,
           cursor.value.nbAvis,
           cursor.value.age);*/
-        console.log("push!")
 
         let point = L.marker([cursor.value.latitude, cursor.value.longitude], { icon: maison });
 
