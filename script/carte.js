@@ -14,6 +14,7 @@ L.tileLayer(
 ).addTo(mymap);
 
 
+
 let maison = L.icon({iconUrl: "res/img/home.png", popupAnchor:  [16, -10]});
 
 let group = L.markerClusterGroup();
@@ -22,6 +23,20 @@ marqueurs.forEach(element => {
     // let point = L.marker([element.lat, element.lng], {icon: maison}).addTo(mymap); // sans cluster
     let point = L.marker([element.latitude, element.longitude], {icon: maison});  // cluster
     group.addLayer(point);  // cluster
-});
-
+})
 mymap.addLayer(group);  // cluster
+
+
+function nbEtoiles(nb){
+    res = "";
+    while(nb > 0){
+        if(nb === 0.5){
+            res += '<i class="star half icon"></i>';
+            nb -= 0.5;
+        } else{
+            res += '<i class="star icon"></i>';
+            nb -= 1.0;
+        }
+    }
+    return res;
+};

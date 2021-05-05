@@ -42,13 +42,9 @@
 
 <body onresize="majAff()" id="body">
     <div style="position: relative;">
-
         <div class="row" id="header">
             <!--Logo, noms ...-->
-            <div class="row">
-                <img class="col" src="res/img/logo.png" alt="logo">
-                <p class="col" class=>NAME</p>
-            </div>
+            <p><img src="res/img/logo.png" alt="logo">NAME</p>
         </div>
         <div class=row>
             <div id="carte"></div>
@@ -94,6 +90,11 @@
         <div class="row justify-content-start" id="footer">
             <!-- about us github ... -->
         </div>
+
+
+
+
+
         <div class="toast" role="alert" style="position: absolute; top: 0; right: 15%; width: 70%" aria-live="assertive"
             aria-atomic="true" data-autohide="false">
             <div class="toast-header">
@@ -101,7 +102,7 @@
                 <button type="button" class="close" data-dismiss="toast">&times;</button>
             </div>
             <div class="toast-body">
-                <form id="formulaire" action="/this_is_a_file.php">
+                <form id="formulaire" onsubmit="">
                     <div class="rowform">
                         <div class="col-25form">
                             <label for="city_consult">Dans quelle ville avez-vous consulté ?</label>
