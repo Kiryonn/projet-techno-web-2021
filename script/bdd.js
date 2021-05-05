@@ -151,7 +151,7 @@ dbconnection.onsuccess = ev => {
           cursor.value.age);*/
         console.log("push!")
         sites.push({
-          id: cursor.value.keyPath,
+          id: cursor.value.id,
           ville: cursor.value.ville, 
           nom: cursor.value.nom,
           type: cursor.value.type,
