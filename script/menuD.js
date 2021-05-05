@@ -54,8 +54,6 @@ function majAff(){
     droite.innerHTML = "";
 
     if (nb === 2){ // 2 sites de sélectionné -> vider centre
-        centre.innerHTML = "";
-
         gauche.innerHTML = "<h1>" + tableau[0] + "</h1>";
         stats(chercheCouple(tableau[0]), "gauche");
         bougerEnfant(tableau[0] + " horaires canvas div", "gauche");
