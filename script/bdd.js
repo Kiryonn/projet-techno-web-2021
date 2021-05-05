@@ -7,16 +7,16 @@ window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.ms
 // (Mozilla n'a jamais préfixé ces objets, donc nous n'avons pas besoin de window.mozIDB*)
 
 if (!window.indexedDB) {
-    window.alert("Votre navigateur ne supporte pas une version stable d'IndexedDB. Quelques fonctionnalités ne seront pas disponibles.")
+  window.alert("Votre navigateur ne supporte pas une version stable d'IndexedDB. Quelques fonctionnalités ne seront pas disponibles.")
 }
 
 let dbconnection = window.indexedDB.open('DepistageDatabase', 10);
 
 //création des constante nessaire
-var listeTypeTest = ['antigenique',' virologique','sérologique'];
-var listeTypeVaccin = ['Pfizer-BioNTech','Moderna','AstraZeneca','Johnson&Johnson'];
+var listeTypeTest = ['antigenique', ' virologique', 'sérologique'];
+var listeTypeVaccin = ['Pfizer-BioNTech', 'Moderna', 'AstraZeneca', 'Johnson&Johnson'];
 
-dbconnection.onupgradeneeded = function(event) {
+dbconnection.onupgradeneeded = function (event) {
   var db = event.target.result;
   var objectStore = db.createObjectStore('centres', { keyPath: "id", autoIncrement: true });
   objectStore.createIndex("ville", "ville", { unique: false });
@@ -36,7 +36,7 @@ dbconnection.onupgradeneeded = function(event) {
   objectStore.createIndex("nbAvis", "nbAvis", { unique: false });
   objectStore.createIndex("age", "age", { unique: false });
 
-  for (i=0 ; i < filtered_database.length ; i++){
+  for (i = 0; i < filtered_database.length; i++) {
     //préparation des variables nessaire : 
     var t = Math.floor(Math.random() * listeTypeVaccin.length); //id type de vaccin
     var v = Math.floor(Math.random() * listeTypeTest.length);   //id type de test
@@ -44,21 +44,21 @@ dbconnection.onupgradeneeded = function(event) {
     el = {
       ville: filtered_database[i].ville,
       nom: filtered_database[i].rs,
-      adresse: filtered_database[i].adresse, 
+      adresse: filtered_database[i].adresse,
       codePostal: filtered_database[i].code,
-      latitude : filtered_database[i].latitude, 
-      longitude : filtered_database[i].longitude,
-      horairesOuverture: [ [[8.5,18.5]] , [[8.5,18.5]] , [[8.5,18.5]] , [[8.5,18.5]] , [[8.5,18.5]] , [[8.5,12],[14,18.5]] , []], //lun, mar, mrc, jeu, vdd, sam, dim ; []-fermé
-      heureAffuence: [[8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],[],[],[],[],[],[]], //creationHeureAffuence(horairesOuverture),
-                     //avant 8h, 8-9, 9-10, ... , 18-19    
+      latitude: filtered_database[i].latitude,
+      longitude: filtered_database[i].longitude,
+      horairesOuverture: [[[8.5, 18.5]], [[8.5, 18.5]], [[8.5, 18.5]], [[8.5, 18.5]], [[8.5, 18.5]], [[8.5, 12], [14, 18.5]], []], //lun, mar, mrc, jeu, vdd, sam, dim ; []-fermé
+      heureAffuence: [[8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], [], [], [], [], [], []], //creationHeureAffuence(horairesOuverture),
+      //avant 8h, 8-9, 9-10, ... , 18-19
       numTel: filtered_database[i].tel_rdv,
       typeTest: listeTypeTest[v],
-      nbTest: Math.floor(Math.random() * 200)+ 1,
+      nbTest: Math.floor(Math.random() * 200) + 1,
       typeVaccin: listeTypeVaccin[t],
-      nbVaccin: Math.floor(Math.random() * 80)+ 1,
-      avis: Math.floor(Math.random() * (5 - 1) + 1)+ Math.floor(Math.random() * 10)/10, //partie entière + partie décimale
-      nbAvis: Math.floor(Math.random() * 100)+ 1, // alétoire entre m<x<n+m
-      age: [1,2,3,4,5,6,7]
+      nbVaccin: Math.floor(Math.random() * 80) + 1,
+      avis: Math.floor(Math.random() * (5 - 1) + 1) + Math.floor(Math.random() * 10) / 10, //partie entière + partie décimale
+      nbAvis: Math.floor(Math.random() * 100) + 1, // alétoire entre m<x<n+m
+      age: [1, 2, 3, 4, 5, 6, 7]
     };
     objectStore.add(el);
   }
@@ -69,31 +69,30 @@ dbconnection.onsuccess = ev => {
   const db = ev.target.result;
   const transaction = db.transaction('centres', 'readwrite');
   const store = transaction.objectStore('centres');
-
   var request = store.get("");
-  request.onerror = function(event) {
+  request.onerror = function (event) {
     // gestion des erreurs!
   };
-  request.onsuccess = function(event) {
+  request.onsuccess = function (event) {
     // Faire quelque chose avec request.result !
-    console.log(request.result);
+    // console.log(request.result);
   };
 
   //const clearRequest = store.clear();
 
-  console.log(filtered_database);
+  //console.log(filtered_database);
   //el est l'objet json qui contient toutes les infos
   //centreDeDepistage_info.forEach(el => store.add(el));
 
   function creationHeureAffuence(horairesOuverture) {
     var listAffuence = [];
     for (let i = 0; i < 13; i++) { //il y a 12 int dans la liste
-                      if (i === cats.length - 1) {
-                        info += 'and ' + cats[i] + '.';
-                      } else {
-                        info += cats[i] + ', ';
-                      }
-                    }
+      if (i === cats.length - 1) {
+        info += 'and ' + cats[i] + '.';
+      } else {
+        info += cats[i] + ', ';
+      }
+    }
   }
 
   transaction.onerror = ev => {
@@ -121,10 +120,10 @@ dbconnection.onsuccess = ev => {
     };
     */
     query.onsuccess = ev => {
-      const cursor = ev.target.result;
+      const cursor = ev.target.result;/*
       if (cursor) {
-        console.log(cursor.key, 
-          cursor.value.ville, 
+        console.log(cursor.key,
+          cursor.value.ville,
           cursor.value.nom,
           cursor.value.adresse,
           cursor.value.codePostal,
@@ -143,7 +142,9 @@ dbconnection.onsuccess = ev => {
         cursor.continue();
       } else {
         console.log('Finished output');
-      }
+      }*/
     };
   };
 }
+
+console.log(dbconnection.source);

@@ -20,8 +20,28 @@ let maison = L.icon({iconUrl: "res/img/home.png", popupAnchor:  [16, -10]});
 let group = L.markerClusterGroup();
 
 marqueurs.forEach(element => {
-    // let point = L.marker([element.lat, element.lng], {icon: maison}).addTo(mymap); // sans cluster
-    let point = L.marker([element.latitude, element.longitude], {icon: maison});  // cluster
+    let point = L.marker([element.latitude, element.longitude], {icon: maison});
+
+    let name = element.rs;
+
+    let description = name;
+
+    point.bindPopup(description);
+    point.addTo(mymap);
+    point.on('click', (e)=>{
+        console.log(nom);
+    });
+    point.on('mouseover', mouseOver);
+    point.on('mouseout', mouseOut);
+
     group.addLayer(point);  // cluster
 })
 mymap.addLayer(group);  // cluster
+
+function mouseOver(e) {
+    this.openPopup();
+}
+
+function mouseOut(e) {
+    this.closePopup();
+}
