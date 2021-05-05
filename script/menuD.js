@@ -9,24 +9,18 @@ var centre = document.getElementById("centre");
 var gauche = document.getElementById("gauche");
 var droite = document.getElementById("droite");
 
-var dejaLoaded = false;
 
 function load(){
-    if(!(dejaLoaded)){
-        dejaLoaded = true;
-        clearInterval(inter);
-        sites.forEach( site => {
-            let nouveauSite = document.createElement("option");
-            nouveauSite.textContent = site.nom;
-            let nouveauSite2 = nouveauSite.cloneNode(true);
-        
-            form1.appendChild(nouveauSite);
-            form2.appendChild(nouveauSite2);
-        });
-    }
+    sites.forEach( site => {
+        let nouveauSite = document.createElement("option");
+        nouveauSite.textContent = site.nom;
+        let nouveauSite2 = nouveauSite.cloneNode(true);
+    
+        form1.appendChild(nouveauSite);
+        form2.appendChild(nouveauSite2);
+    });
 }
 
-var inter = setInterval(load, 100);
 
 function menuClick(choix, num){
     //tableau[num] = choix.options[choix.selectedIndex].text;

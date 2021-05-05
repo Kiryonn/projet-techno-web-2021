@@ -189,6 +189,7 @@ dbconnection.onsuccess = ev => {
         cursor.continue();
       } else {
         console.log('Finished output');
+        load();
       }
     }
   }
