@@ -13,14 +13,17 @@ if (!window.indexedDB) {
 let dbconnection = window.indexedDB.open('DepistageDatabase', 10);
 
 //création des constante nessaire
-var listeTypeTest = ['antigenique', ' virologique', 'sérologique'];
-var listeTypeVaccin = ['Pfizer-BioNTech', 'Moderna', 'AstraZeneca', 'Johnson&Johnson'];
+
+var listeTypeTest = ['antigenique',' virologique','sérologique'];
+var listeTypeVaccin = ['Pfizer-BioNTech','Moderna','AstraZeneca','Johnson&Johnson'];
+var listeType = ["hôpital", "tente", "laboratoire", "pharmacie"];
 
 dbconnection.onupgradeneeded = function (event) {
   var db = event.target.result;
   var objectStore = db.createObjectStore('centres', { keyPath: "id", autoIncrement: true });
   objectStore.createIndex("ville", "ville", { unique: false });
   objectStore.createIndex("nom", "nom", { unique: false });
+  objectStore.createIndex("type", "type", { unique: false });
   objectStore.createIndex("adresse", "adresse", { unique: false });
   objectStore.createIndex("codePostal", "codePostal", { unique: false });
   objectStore.createIndex("longitude", "longitude", { unique: false });
@@ -40,11 +43,14 @@ dbconnection.onupgradeneeded = function (event) {
     //préparation des variables nessaire : 
     var t = Math.floor(Math.random() * listeTypeVaccin.length); //id type de vaccin
     var v = Math.floor(Math.random() * listeTypeTest.length);   //id type de test
+    var ty = Math.floor(Math.random() * listeType.length);      //id type site
     //console.log(t,v);
     el = {
       ville: filtered_database[i].ville,
       nom: filtered_database[i].rs,
-      adresse: filtered_database[i].adresse,
+
+      type: listeType[ty],
+      adresse: filtered_database[i].adresse, 
       codePostal: filtered_database[i].code,
       latitude: filtered_database[i].latitude,
       longitude: filtered_database[i].longitude,
@@ -63,6 +69,9 @@ dbconnection.onupgradeneeded = function (event) {
     objectStore.add(el);
   }
 }
+
+//on charge tout les sites la dedans
+var sites = [];
 
 dbconnection.onsuccess = ev => {
   console.log('Connected');
@@ -122,8 +131,9 @@ dbconnection.onsuccess = ev => {
     query.onsuccess = ev => {
       const cursor = ev.target.result;/*
       if (cursor) {
-        console.log(cursor.key,
-          cursor.value.ville,
+
+        /*console.log(cursor.key, 
+          cursor.value.ville, 
           cursor.value.nom,
           cursor.value.adresse,
           cursor.value.codePostal,
@@ -138,7 +148,27 @@ dbconnection.onsuccess = ev => {
           cursor.value.nbVaccin,
           cursor.value.avis,
           cursor.value.nbAvis,
-          cursor.value.age);
+          cursor.value.age);*/
+        console.log("push!")
+        sites.push({
+          id: cursor.value.keyPath,
+          ville: cursor.value.ville, 
+          nom: cursor.value.nom,
+          type: cursor.value.type,
+          adresse: cursor.value.adresse,
+          codePostal: cursor.value.codePostal,
+          latitude: cursor.value.latitude,
+          longitude: cursor.value.longitude,
+          horairesOuverture: cursor.value.horairesOuverture,
+          heureAffluence: cursor.value.heureAffuence,
+          numTel: cursor.value.numTel,
+          typeTest: cursor.value.typeTest,
+          nbTest: cursor.value.nbTest,
+          typeVaccin: cursor.value.typeVaccin,
+          nbVaccin: cursor.value.nbVaccin,
+          avis: cursor.value.avis,
+          nbAvis: cursor.value.nbAvis,
+          age: cursor.value.age});
         cursor.continue();
       } else {
         console.log('Finished output');
@@ -146,5 +176,3 @@ dbconnection.onsuccess = ev => {
     };
   };
 }
-
-console.log(dbconnection.source);
