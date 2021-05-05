@@ -15,6 +15,9 @@
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    <!-- Semantique UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
+
     <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -41,10 +44,11 @@
 </head>
 
 <body onresize="majAff()" id="body">
-    <div style="position: relative;">
         <div class="row" id="header">
             <!--Logo, noms ...-->
-            <p><img src="res/img/logo.png" alt="logo">NAME</p>
+            <div class="nav">
+                <p><img src="res/img/logo.png" alt="logo">NAME</p>
+            </div>
         </div>
         <div class=row>
             <div id="carte"></div>
@@ -90,135 +94,7 @@
         <div class="row justify-content-start" id="footer">
             <!-- about us github ... -->
         </div>
-
-
-
-
-
-        <div class="toast" role="alert" style="position: absolute; top: 0; right: 15%; width: 70%" aria-live="assertive"
-            aria-atomic="true" data-autohide="false">
-            <div class="toast-header">
-                <strong class="text-primary">Formulaire</strong>
-                <button type="button" class="close" data-dismiss="toast">&times;</button>
-            </div>
-            <div class="toast-body">
-                <form id="formulaire" onsubmit="">
-                    <div class="rowform">
-                        <div class="col-25form">
-                            <label for="city_consult">Dans quelle ville avez-vous consulté ?</label>
-                        </div>
-                        <div class="col-75form">
-                            <select id="city_consult" name="city_consult" onchange="establishmentUpdate()"></select>
-                        </div>
-                    </div>
-
-                    <div class="rowform">
-                        <div class="col-25form">
-                            <label for="place_consult">Dans quel établissement ?</label>
-                        </div>
-                        <div class="col-75form">
-                            <select id="place_consult" name="place_consult">
-                                <option value="no_value">Stp selectionner une ville</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="rowform">
-                        <div class="col-25form">
-                            <label for="arrival_date">Quel jour êtes vous venue ?</label>
-                        </div>
-                        <div class="col-75form">
-                            <select id="arrival_date" name="arrival_date">
-                                <option value="monday">Lundi</option>
-                                <option value="tuesday">Mardi</option>
-                                <option value="wednesday">Mercredi</option>
-                                <option value="thursday">Jeudi</option>
-                                <option value="friday">Vendredi</option>
-                                <option value="saturday">Samedi</option>
-                                <option value="sunday">Dimanche</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="rowform">
-                        <div class="col-25form">
-                            <label for="arrival_hour">A quelle heure êtes-vous arrivé ?</label>
-                        </div>
-                        <div class="col-75form">
-                            <input type="time" id="arrival_hour" name="arrival_hour">
-                        </div>
-                    </div>
-
-                    <div class="rowform">
-                        <div class="col-25form">
-                            <label for="departed_hour">A quelle heure êtes-vous sortie ?</label>
-                        </div>
-                        <div class="col-75form">
-                            <input type="time" id="departed_hour" name="departed_hour">
-                        </div>
-                    </div>
-
-                    <div class="rowform">
-                        <div class="col-25form">
-                            <label for="motive">Quel est le motif de votre venue :</label>
-                        </div>
-                        <div class="col-75form">
-                            <input class="checkboxform" type="checkbox" id="motif_1" name="motif_1" value="depistage">
-                            <label for="motif_1"> Depistage du Covid-19</label>
-                            <br>
-                            <input class="checkboxform" type="checkbox" id="motif_2" name="motif_2" value="vaccination">
-                            <label for="motif_2"> Vaccination du Covid-19</label>
-                        </div>
-                    </div>
-
-                    <div class="rowform">
-                        <div class="col-25form">
-                            <label for="age">Quel est votre age ?</label>
-                        </div>
-                        <div class="col-75form">
-                            <select id="age" name="age">
-                                <option value="under_18">0 à 18</option>
-                                <option value="between_18_and_25">18 à 25</option>
-                                <option value="between_25_and_35">25 à 35</option>
-                                <option value="between_35_and_45">35 à 45</option>
-                                <option value="between_45_and_55">45 à 55</option>
-                                <option value="between_55_and_65">55 à 65</option>
-                                <option value="over_65">65 ou plus</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="rowform">
-                        <div class="col-25form">
-                            <label for="quality_control">Comment notez vous la prestation ?</label>
-                        </div>
-                        <div class="col-75form">
-                            <input type="range" class="sliderform" min="1" max="5" list="quality_control_values">
-
-                            <datalist id="quality_control_values">
-                                <option value="1"></option>
-                                <option value="2"></option>
-                                <option value="3"></option>
-                                <option value="4"></option>
-                                <option value="5"></option>
-                            </datalist>
-                        </div>
-                    </div>
-
-                    <input type="submit" value="Envoyer">
-                </form>
-            </div>
-        </div>
     </div>
-
-
-
-
-    <script>
-        $(document).ready(function () {
-            $('.toast').toast('show');
-        });
-    </script>
 </body>
 
 </html>

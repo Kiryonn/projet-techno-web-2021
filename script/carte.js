@@ -25,18 +25,3 @@ marqueurs.forEach(element => {
     group.addLayer(point);  // cluster
 })
 mymap.addLayer(group);  // cluster
-
-
-function nbEtoiles(nb){
-    res = "";
-    while(nb > 0){
-        if(nb === 0.5){
-            res += '<i class="star half icon"></i>';
-            nb -= 0.5;
-        } else{
-            res += '<i class="star icon"></i>';
-            nb -= 1.0;
-        }
-    }
-    return res;
-};
