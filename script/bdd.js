@@ -14,8 +14,8 @@ let dbconnection = window.indexedDB.open('DepistageDatabase', 10);
 
 //création des constante nessaire
 
-var listeTypeTest = ['antigenique',' virologique','sérologique'];
-var listeTypeVaccin = ['Pfizer-BioNTech','Moderna','AstraZeneca','Johnson&Johnson'];
+var listeTypeTest = ['antigenique', ' virologique', 'sérologique'];
+var listeTypeVaccin = ['Pfizer-BioNTech', 'Moderna', 'AstraZeneca', 'Johnson&Johnson'];
 var listeType = ["hôpital", "tente", "laboratoire", "pharmacie"];
 
 dbconnection.onupgradeneeded = function (event) {
@@ -50,7 +50,7 @@ dbconnection.onupgradeneeded = function (event) {
       nom: filtered_database[i].rs,
 
       type: listeType[ty],
-      adresse: filtered_database[i].adresse, 
+      adresse: filtered_database[i].adresse,
       codePostal: filtered_database[i].code,
       latitude: filtered_database[i].latitude,
       longitude: filtered_database[i].longitude,
@@ -150,9 +150,22 @@ dbconnection.onsuccess = ev => {
           cursor.value.nbAvis,
           cursor.value.age);*/
         console.log("push!")
+
+        let point = L.marker([cursor.value.latitude, cursor.value.longitude], { icon: maison });
+
+        let description = cursor.value.id + "<br>" + cursor.value.nom;
+
+        point.bindPopup(description);
+        point.addTo(mymap);
+        point.on('click', (e)=>{
+          console.log(e.target._popup._content.split('<br>'));
+        });
+
+        group.addLayer(point);  // cluster
+
         sites.push({
           id: cursor.value.id,
-          ville: cursor.value.ville, 
+          ville: cursor.value.ville,
           nom: cursor.value.nom,
           type: cursor.value.type,
           adresse: cursor.value.adresse,
@@ -168,7 +181,8 @@ dbconnection.onsuccess = ev => {
           nbVaccin: cursor.value.nbVaccin,
           avis: cursor.value.avis,
           nbAvis: cursor.value.nbAvis,
-          age: cursor.value.age});
+          age: cursor.value.age
+        });
         cursor.continue();
       } else {
         console.log('Finished output');

@@ -18,7 +18,7 @@ L.tileLayer(
 let maison = L.icon({iconUrl: "res/img/home.png", popupAnchor:  [16, -10]});
 
 let group = L.markerClusterGroup();
-
+/*
 marqueurs.forEach(element => {
     let point = L.marker([element.latitude, element.longitude], {icon: maison});
 
@@ -28,16 +28,14 @@ marqueurs.forEach(element => {
 
     point.bindPopup(description);
     point.addTo(mymap);
-    point.on('click', (e)=>{
-        console.log(nom);
-    });
+    point.on('click', click);
     point.on('mouseover', mouseOver);
     point.on('mouseout', mouseOut);
 
     group.addLayer(point);  // cluster
-})
+})*/
 mymap.addLayer(group);  // cluster
-
+/*
 function mouseOver(e) {
     this.openPopup();
 }
@@ -45,3 +43,7 @@ function mouseOver(e) {
 function mouseOut(e) {
     this.closePopup();
 }
+
+function click(e) {
+    console.log(e.target._popup._content);
+}*/
