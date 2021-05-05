@@ -129,7 +129,7 @@ dbconnection.onsuccess = ev => {
     };
     */
     query.onsuccess = ev => {
-      const cursor = ev.target.result;/*
+      const cursor = ev.target.result;
       if (cursor) {
 
         /*console.log(cursor.key, 
@@ -172,7 +172,7 @@ dbconnection.onsuccess = ev => {
         cursor.continue();
       } else {
         console.log('Finished output');
-      }*/
-    };
-  };
+      }
+    }
+  }
 }
