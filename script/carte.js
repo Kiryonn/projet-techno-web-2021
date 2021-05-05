@@ -1,6 +1,8 @@
 document.getElementById("carte").style.height = screen.height/2 + 50 + "px";
 
 let mymap = L.map('carte').setView([43.9277552, 2.147899], 13);
+let isFirstSelect = true;
+let sites = [];
 
 L.tileLayer(
     'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -18,32 +20,5 @@ L.tileLayer(
 let maison = L.icon({iconUrl: "res/img/home.png", popupAnchor:  [16, -10]});
 
 let group = L.markerClusterGroup();
-/*
-marqueurs.forEach(element => {
-    let point = L.marker([element.latitude, element.longitude], {icon: maison});
 
-    let name = element.rs;
-
-    let description = name;
-
-    point.bindPopup(description);
-    point.addTo(mymap);
-    point.on('click', click);
-    point.on('mouseover', mouseOver);
-    point.on('mouseout', mouseOut);
-
-    group.addLayer(point);  // cluster
-})*/
 mymap.addLayer(group);  // cluster
-/*
-function mouseOver(e) {
-    this.openPopup();
-}
-
-function mouseOut(e) {
-    this.closePopup();
-}
-
-function click(e) {
-    console.log(e.target._popup._content);
-}*/

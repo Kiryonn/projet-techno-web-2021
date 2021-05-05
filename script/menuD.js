@@ -11,36 +11,26 @@ var droite = document.getElementById("droite");
 
 var dejaLoaded = false;
 
-// si c/c dansla console -> ok
-// mais problème pour créer les horaires?!?
 function load(){
     if(!(dejaLoaded)){
         dejaLoaded = true;
         clearInterval(inter);
         sites.forEach( site => {
-            //console.log("on passe dans le forEach!")
-            //console.log(site);
-            //data.push([site.nom, site]);
-        
             let nouveauSite = document.createElement("option");
             nouveauSite.textContent = site.nom;
             let nouveauSite2 = nouveauSite.cloneNode(true);
         
             form1.appendChild(nouveauSite);
             form2.appendChild(nouveauSite2);
-            //console.log("nom nouveau site: " + site.nom);
-            //console.log("ajout de " + nouveauSite);
         });
     }
 }
 
-var inter = setInterval(load, 100); // 
+var inter = setInterval(load, 100);
 
 function menuClick(choix, num){
-    //console.log("menu", num, ":",  choix.options[choix.selectedIndex].text);
     //tableau[num] = choix.options[choix.selectedIndex].text;
     tableau[num] = choix.selectedIndex;
-    //console.log(tableau);
     majAff();
 }
 

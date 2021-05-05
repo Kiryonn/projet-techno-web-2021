@@ -71,7 +71,7 @@ dbconnection.onupgradeneeded = function (event) {
 }
 
 //on charge tout les sites la dedans
-var sites = [];
+
 
 dbconnection.onsuccess = ev => {
   console.log('Connected');
@@ -156,7 +156,11 @@ dbconnection.onsuccess = ev => {
 
         point.bindPopup(description);
         point.addTo(mymap);
-        point.on('click', (e)=>{
+        point.on('click', (e) => {
+          console.log(sites);
+          if (isFirstSelect) {
+
+          }
           console.log(e.target._popup._content.split('<br>'));
         });
 
