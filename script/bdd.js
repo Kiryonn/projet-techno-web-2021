@@ -155,7 +155,7 @@ dbconnection.onsuccess = ev => {
         let description = "<p hidden>" + cursor.value.id + "</p><br>" + cursor.value.nom;
 
         point.bindPopup(description);
-        point.addTo(mymap);
+        
         point.on('click', (e) => {
           id = parseInt(e.target._popup._content.split('<br>')[0].split('>')[1].split('<')[0]);
           if (isFirstSelect) {
