@@ -180,12 +180,6 @@ function showCompar() {
   else
     button.innerText = "Cacher la selection";
 }
-/*
-stats(sites[0], null);
-stats(sites[1], null);
-stats(sites[2], null);
-*/
-
 
 
 

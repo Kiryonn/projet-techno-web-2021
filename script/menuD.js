@@ -14,6 +14,7 @@ function load(){
     sites.forEach( site => {
         let nouveauSite = document.createElement("option");
         nouveauSite.textContent = site.nom;
+        nouveauSite.value = site.id;
         let nouveauSite2 = nouveauSite.cloneNode(true);
     
         form1.appendChild(nouveauSite);

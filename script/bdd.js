@@ -155,14 +155,17 @@ dbconnection.onsuccess = ev => {
         let description = "<p hidden>" + cursor.value.id + "</p><br>" + cursor.value.nom;
 
         point.bindPopup(description);
-        
+
         point.on('click', (e) => {
           id = parseInt(e.target._popup._content.split('<br>')[0].split('>')[1].split('<')[0]);
           if (isFirstSelect) {
             tableau[0] = id-1;
+            form1.value = id;
+            console.log(id);
             majAff();
           } else{
             tableau[1] = id-1;
+            form2.value = id;
             majAff();
           }
           isFirstSelect = !isFirstSelect;
