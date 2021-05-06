@@ -1,4 +1,4 @@
-var tableau = [0, 0]; // Tableau stockant les deux site à comparer (utiliser uniquement la première case si un seul site)
+var tableau = [-1, -1]; // Tableau stockant les deux site à comparer (utiliser uniquement la première case si un seul site)
 
 //var data = []; // tableau qui va stocker pour chaque nom de site le site entier associé 
 
@@ -24,7 +24,7 @@ function load(){
 
 function menuClick(choix, num){
     //tableau[num] = choix.options[choix.selectedIndex].text;
-    tableau[num] = choix.selectedIndex;
+    tableau[num] = choix.selectedIndex - 1;
     majAff();
 }
 
@@ -86,11 +86,11 @@ function lireTableau(){
     let id = 0; // donne la case du tableau utile pour affichage centre
 
     //if (tableau[0] !== "-- choisissez un site --" && tableau[0] !== undefined){
-    if (tableau[0] !== 0){
+    if (tableau[0] !== -1){
         nb = 1;
     }
     //if (tableau[1] !== "-- choisissez un site --" && tableau[1] !== undefined){
-    if (tableau[1] !== 0){
+    if (tableau[1] !== -1){
         nb = nb + 1;
         id = 1;
     }
