@@ -42,11 +42,22 @@
 
 <body onresize="majAff()" id="body">
     <div>
-        <div class="nav" id="header">
-            <!--Logo, noms ...-->
-            <a href="" style="color: black"><h4><img src="res/img/logo.png" alt="logo">Tortue x Chat colab </h4></a>
-            <a href="formulaire.html" style="color: black; margin: auto; margin-left: 0;"><h4>  Retour d'expérience</h4></a>
-        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <img src="res/img/logo.png" alt="logo">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="formulaire.html">Retour d'expérience</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
         <div class=row>
             <div id="carte"></div>
             <script src="script/carte.js"></script>
