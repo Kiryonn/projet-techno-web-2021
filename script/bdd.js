@@ -152,17 +152,27 @@ dbconnection.onsuccess = ev => {
 
         let point = L.marker([cursor.value.latitude, cursor.value.longitude], { icon: maison });
 
-        let description = cursor.value.id + "<br>" + cursor.value.nom;
+        let description = "<p hidden>" + cursor.value.id + "</p><br>" + cursor.value.nom;
 
         point.bindPopup(description);
         point.addTo(mymap);
         point.on('click', (e) => {
-          console.log(sites);
+          id = parseInt(e.target._popup._content.split('<br>')[0].split('>')[1].split('<')[0]);
           if (isFirstSelect) {
-
+            tableau[0] = id-1;
+            majAff();
+          } else{
+            tableau[1] = id-1;
+            majAff();
           }
-          console.log(e.target._popup._content.split('<br>'));
+          isFirstSelect = !isFirstSelect;
         });
+        point.on('mouseover', (e)=>{
+          point.openPopup();
+        });
+        point.on('mouseout', (e)=>{
+          point.closePopup();
+        })
 
         group.addLayer(point);  // cluster
 
