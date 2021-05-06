@@ -160,6 +160,7 @@ function afficherInfo(site){ //passer le site entier en paramètre
 function stats(numSite, pere){
   let site = sites[numSite];
   let largueur = document.getElementById(pere).offsetWidth;
+  console.log(largueur);
   let hauteur = largueur*0.75;
   console.log("appel stats()")
   nomG = numSite + " " + site.nom;
