@@ -3,8 +3,8 @@ var nomG;
 function createCanvas(nom, longueur, hauteur){
   let canvas = document.createElement('canvas');
   canvas.id = nom;
-  canvas.width = longueur;
-  canvas.height = hauteur;
+  canvas.width = longueur-20;
+  canvas.height = hauteur-20;
 
   let div = document.createElement('div');
   div.id = nom + " div";
