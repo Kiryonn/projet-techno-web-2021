@@ -170,6 +170,16 @@ function stats(numSite, pere){
   createHoraires(nomG + " horaires canvas", largueur, hauteur, site.horairesOuverture);
   afficherInfo(site);
 }
+
+function showCompar() {
+  let comparaison = document.getElementById("comparaisons");
+  let button = document.getElementById("onlyButton");
+  comparaison.hidden = ! comparaison.hidden;
+  if (comparaison.hidden)
+    button.innerText = "Afficher la selection";
+  else
+    button.innerText = "Cacher la selection";
+}
 /*
 stats(sites[0], null);
 stats(sites[1], null);
