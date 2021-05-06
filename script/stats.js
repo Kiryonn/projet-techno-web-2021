@@ -151,6 +151,9 @@ function afficherInfo(site){ //passer le site entier en paramètre
   texte.innerHTML += "<strong>Nombre de vaccination:</strong> " + site.nbVaccin                    + "<br>";
   texte.innerHTML += "<strong>Avis:</strong> "                  + avisSite(site.avis, site.nbAvis) + "<br>";
 
+  // Lien formulaire
+  texte.innerHTML += "<a href=\"formulaire.html?id=" + site.id + "\" target=\"_blank\">Retour d'expérience</a>";
+
   document.body.appendChild(div);
   document.getElementById(div.id).appendChild(texte);
 }
