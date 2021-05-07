@@ -32,24 +32,32 @@
     <script src="cluster/dist/leaflet.markercluster.js"></script>
 
     <!-- css -->
-    <link rel="stylesheet" href="style/basics.css">
     <link rel="stylesheet" href="style/stats.css" type="text/css">
 
     <!-- données -->
-    <script src="res/data.js"></script>
-    <script src="res/sites.js"></script>
-    <!-- <script type="text/javascript" src="filtered_database.js"></script>
-    <script type="text/javascript" src="bdd.js"></script> -->
+    <script src="script/filtered_database.js"></script>
+    <script src="script/bdd.js"></script>
 
 </head>
 
 <body onresize="majAff()" id="body">
-        <div class="row" id="header">
-            <!--Logo, noms ...-->
-            <div class="nav">
-                <p><img src="res/img/logo.png" alt="logo">NAME</p>
+    <div>
+        <nav class="navbar navbar-expand-lg">
+            <img src="res/img/logo.png" alt="logo">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav" style="background: black;">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="" style="color: white;">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="formulaire.html" style="color: white;">Retour d'expérience</a>
+                </li>
+              </ul>
             </div>
-        </div>
+          </nav>
         <div class=row>
             <div id="carte"></div>
             <script src="script/carte.js"></script>
@@ -57,7 +65,8 @@
         </div>
 
 
-        <div id="comparaisons">
+       <button id="onlyButton" type="button" onclick="showCompar()">Afficher la selection</button> 
+        <div hidden id="comparaisons">
 
             <form id="menu1">
                 <select id="site1" onclick="menuClick(this, 0);">
@@ -74,18 +83,12 @@
 
         <div class="row justify-content-start" id="stats" style="padding: 0px;">
             <div id="centre" class="col">
-                <!-- Stats d'un site en plein écran (taille 100%) -->
-                <!-- <p>test1</p> -->
             </div>
 
             <div id="gauche">
-                <!-- Stats d'un site à gauche (taille 50%) -->
-                <!-- <p>test2</p> -->
             </div>
 
             <div id="droite">
-                <!-- Stats d'un site à droite (taille 50%) -->
-                <!-- <p>test3</p> -->
             </div>
             <script src="script/stats.js"></script>
             <script src="script/menuD.js"></script>

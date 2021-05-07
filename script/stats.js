@@ -1,8 +1,10 @@
+var nomG;
+
 function createCanvas(nom, longueur, hauteur){
   let canvas = document.createElement('canvas');
   canvas.id = nom;
-  canvas.width = longueur;
-  canvas.height = hauteur;
+  canvas.width = longueur-20;
+  canvas.height = hauteur-20;
 
   let div = document.createElement('div');
   div.id = nom + " div";
@@ -35,6 +37,7 @@ function createHoraires(nom, largueur, hauteur, tabHoraires){
   let h = ["7h", "8h", "9h", "10h", "11h", "12h", "13h", "14h", "15h", "16h", "17h", "18h"]; // préférable d'utiliser cet affichage pour l'heure, plus lisible sur petit schéma.
   let canvas = document.getElementById(nom);
   let hor = tabHoraires;
+  console.log("horaires: " + hor);
   dessinRectangle(nom, 0, 0, canvas.width, canvas.height, 'rgba(50, 50, 50, 0.3)');
 
   for (let i=1; i<8; i++){
@@ -136,10 +139,10 @@ function avisSite(note, total){
 
 function afficherInfo(site){ //passer le site entier en paramètre
   let div = document.createElement('div');
-  div.id = site.nom + " info div";
+  div.id = nomG + " info div";
 
   let texte = document.createElement('p');
-  texte.id = site.nom + " info";
+  texte.id = nomG + " info";
 
   texte.innerHTML += "<strong>Type de site:</strong> "          + typeSite(site.type)              + "<br>";
   texte.innerHTML += "<strong>Test effectué:</strong> "         + typeTest(site.typeTest)          + "<br>";
@@ -148,24 +151,35 @@ function afficherInfo(site){ //passer le site entier en paramètre
   texte.innerHTML += "<strong>Nombre de vaccination:</strong> " + site.nbVaccin                    + "<br>";
   texte.innerHTML += "<strong>Avis:</strong> "                  + avisSite(site.avis, site.nbAvis) + "<br>";
 
+  // Lien formulaire
+  texte.innerHTML += "<a style='color: rgb(0,150,0);' href='formulaire.html?id=" + site.id + "' target='blank'>Retour d'expérience</a>";
+
   document.body.appendChild(div);
   document.getElementById(div.id).appendChild(texte);
 }
 
 
 
-function stats(site, pere){
+function stats(numSite, pere){
+  let site = sites[numSite];
   let largueur = document.getElementById(pere).offsetWidth;
+  console.log(largueur);
   let hauteur = largueur*0.75;
-  createHoraires(site.nom + " horaires canvas", largueur, hauteur, site.horairesOuverture);
+  console.log("appel stats()")
+  nomG = numSite + " " + site.nom;
+  createHoraires(nomG + " horaires canvas", largueur, hauteur, site.horairesOuverture);
   afficherInfo(site);
 }
-/*
-stats(sites[0], null);
-stats(sites[1], null);
-stats(sites[2], null);
-*/
 
+function showCompar() {
+  let comparaison = document.getElementById("comparaisons");
+  let button = document.getElementById("onlyButton");
+  comparaison.hidden = ! comparaison.hidden;
+  if (comparaison.hidden)
+    button.innerText = "Afficher la selection";
+  else
+    button.innerText = "Cacher la selection";
+}
 
 
 
