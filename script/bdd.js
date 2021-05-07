@@ -10,7 +10,7 @@ if (!window.indexedDB) {
   window.alert("Votre navigateur ne supporte pas une version stable d'IndexedDB. Quelques fonctionnalités ne seront pas disponibles.")
 }
 
-indexedDB.deleteDatabase("DepistageDatabase");
+
 let dbconnection = window.indexedDB.open('DepistageDatabase', 10);
 //création des constante nessaire
 
