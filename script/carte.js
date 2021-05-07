@@ -1,6 +1,6 @@
 document.getElementById("carte").style.height = screen.height/2 + 50 + "px";
 
-let mymap = L.map('carte').setView([43.9277552, 2.147899], 13);
+let mymap = L.map('carte').setView([47.22523869402, -1.55901518838745], 13);
 let isFirstSelect = true;
 let sites = [];
 

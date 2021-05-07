@@ -10,8 +10,8 @@ if (!window.indexedDB) {
   window.alert("Votre navigateur ne supporte pas une version stable d'IndexedDB. Quelques fonctionnalités ne seront pas disponibles.")
 }
 
+indexedDB.deleteDatabase("DepistageDatabase");
 let dbconnection = window.indexedDB.open('DepistageDatabase', 10);
-
 //création des constante nessaire
 
 var listeTypeTest = ['antigenique', ' virologique', 'sérologique'];
@@ -44,7 +44,30 @@ dbconnection.onupgradeneeded = function (event) {
     var t = Math.floor(Math.random() * listeTypeVaccin.length); //id type de vaccin
     var v = Math.floor(Math.random() * listeTypeTest.length);   //id type de test
     var ty = Math.floor(Math.random() * listeType.length);      //id type site
-    //console.log(t,v);
+
+    let horraires = [];
+    let affl = []
+    for (let jour = 0; jour < 6; jour++) {
+      let h = getRandomH()
+      let affl_h = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      horraires.push(h);
+      if (h[0] instanceof Array) {
+        for (let deb = h[0][0]-8; deb <= h[0][1]-8; deb+= 0.5) {
+          affl_h[Math.floor(deb)] += myRandom(2, 15);
+        }
+        for (let deb = h[1][0]-8; deb <= h[1][1]-8; deb+=0.5) {
+          affl_h[Math.floor(deb)] = myRandom(2, 15);
+        }
+      } else {
+        for (let deb = h[0]-8; deb <= h[1]-8; deb+= 0.5) {
+          affl_h[Math.floor(deb)] += myRandom(2, 15);
+        }
+      }
+      affl.push(affl_h);
+    }
+    horraires.push([]);
+    affl.push([]);
+
     el = {
       ville: filtered_database[i].ville,
       nom: filtered_database[i].rs,
@@ -54,8 +77,8 @@ dbconnection.onupgradeneeded = function (event) {
       codePostal: filtered_database[i].code,
       latitude: filtered_database[i].latitude,
       longitude: filtered_database[i].longitude,
-      horairesOuverture: [[[8.5, 18.5]], [[8.5, 18.5]], [[8.5, 18.5]], [[8.5, 18.5]], [[8.5, 18.5]], [[8.5, 12], [14, 18.5]], []], //lun, mar, mrc, jeu, vdd, sam, dim ; []-fermé
-      heureAffuence: [[8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], [], [], [], [], [], []], //creationHeureAffuence(horairesOuverture),
+      horairesOuverture: horraires, //lun, mar, mrc, jeu, vdd, sam, dim ; []-fermé
+      heureAffuence: affl, //creationHeureAffuence(horairesOuverture),
       //avant 8h, 8-9, 9-10, ... , 18-19
       numTel: filtered_database[i].tel_rdv,
       typeTest: listeTypeTest[v],
@@ -159,21 +182,21 @@ dbconnection.onsuccess = ev => {
         point.on('click', (e) => {
           id = parseInt(e.target._popup._content.split('<br>')[0].split('>')[1].split('<')[0]);
           if (isFirstSelect) {
-            tableau[0] = id-1;
+            tableau[0] = id - 1;
             form1.value = id;
             console.log(id);
             majAff();
-          } else{
-            tableau[1] = id-1;
+          } else {
+            tableau[1] = id - 1;
             form2.value = id;
             majAff();
           }
           isFirstSelect = !isFirstSelect;
         });
-        point.on('mouseover', (e)=>{
+        point.on('mouseover', (e) => {
           point.openPopup();
         });
-        point.on('mouseout', (e)=>{
+        point.on('mouseout', (e) => {
           point.closePopup();
         })
 
@@ -206,4 +229,34 @@ dbconnection.onsuccess = ev => {
       }
     }
   }
+}
+
+
+function getRandomH() {
+  if (myRandom(0, 100) > 15) {
+    let poss1 = [8, 8.5, 9, 9.5, 10, 10.5];
+    let poss2 = [10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14];
+    let poss3 = [14, 14.5, 15, 15.5, 16, 16.5];
+    let poss4 = [16, 16.5, 17, 17.5, 18, 18.5, 19];
+
+    let deb1 = poss1[myRandom(0, poss1.length - 1)];
+    while (poss2[0] < deb1 + 2)
+      poss2.splice(0, 1);
+    let fin1 = poss2[myRandom(0, poss2.length - 1)];
+    while (poss3[0] < fin1 + 2)
+      poss3.splice(0, 1);
+    let deb2 = poss3[myRandom(0, poss3.length - 1)];
+    while (poss4[0] < deb2 + 2)
+      poss4.splice(0, 1);
+    let fin2 = poss4[myRandom(0, poss3.length - 1)];
+    return [[deb1, fin1], [deb2, fin2]];
+  } else {
+    let poss1 = [8, 8.5, 9, 9.5, 10];
+    let poss2 = [16, 16.5, 17, 17.5, 18, 18.5, 19];
+    return [poss1[myRandom(0, poss1.length-1)], poss2[myRandom(0, poss2.length-1)]];
+  }
+}
+
+function myRandom(deb, fin) {
+  return Math.floor(Math.random() * (fin))+deb;
 }

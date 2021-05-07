@@ -1,3 +1,7 @@
+body{
+    background: black;
+}
+
 #stats{
     width: 90%;
     margin-left: auto;
@@ -12,17 +16,17 @@
 
 #centre{
     width: auto;
-    /*background-color: rgb(110, 159, 231);*/
+    background-color: white;
 }
 
 #gauche{
     width: 47%;
-    background-color: rgb(110, 159, 231);
+    background-color: white;
     float: left;
 }
 
 #droite{
     width: 47%;
-    background-color: rgb(236, 89, 114);
+    background-color: white;
     float: right;
 }
